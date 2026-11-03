@@ -3,11 +3,11 @@
 Homebrew casks for [blackice](https://github.com/ValentinTorassa/blackice).
 
 ```console
-$ brew tap valentintorassa/tap
-$ brew install --cask blackice
+$ brew trust --cask valentintorassa/tap/blackice
+$ brew install --cask valentintorassa/tap/blackice
 ```
 
-or, in one step, `brew install --cask valentintorassa/tap/blackice`.
+Homebrew loads casks from taps other than its own only after `brew trust`, hence the first command.
 
 | Cask | What it installs |
 |---|---|
