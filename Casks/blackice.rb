@@ -1,7 +1,7 @@
 cask "blackice" do
   # scripts/update-cask.sh sets both for each release.
-  version "0.1.0"
-  sha256 "f7d5280aba612ad8d7894adedac4931b9322ab6d5f2b0e84e56f574d48482c57"
+  version "0.2.0"
+  sha256 "29d14e99df445914fe092b9ef644b7de3e6eadc2819f6dbe085a699c1c8aba3b"
 
   url "https://github.com/ValentinTorassa/blackice/releases/download/v#{version}/Blackice-#{version}.zip"
   name "Blackice"
@@ -38,9 +38,9 @@ cask "blackice" do
   zap trash: "~/Library/Logs/blackice"
 
   caveats <<~EOS
-    blackice is a network extension. macOS holds it until you allow it, and the first
-    `blackice start` waits for that: open System Settings > General > Login Items &
-    Extensions > Network Extensions and turn Blackice on.
+    Run `blackice start`. The first time, it asks a few questions to write
+    ~/.config/blackice/blackice.toml, then opens System Settings: under General >
+    Login Items & Extensions > Network Extensions, turn Blackice on.
 
     To run the hooks in ask mode, load the daemon (a LaunchAgent for your user):
       blackice agent install
@@ -54,6 +54,6 @@ cask "blackice" do
     `blackice agent uninstall` and `blackice agent install`, so that the daemon runs the
     new binary.
 
-    Install guide: https://github.com/ValentinTorassa/blackice/blob/main/docs/install.md
+    Install guide: https://blackice-macos.vercel.app/docs/install
   EOS
 end
