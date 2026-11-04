@@ -1,7 +1,7 @@
 cask "blackice" do
   # scripts/update-cask.sh sets both for each release.
-  version "0.3.0"
-  sha256 "4bc2548f7d69fed8df4a12b31dc4610dfe81a71e6673e18a000fec48425d6b86"
+  version "0.3.1"
+  sha256 "ae6ab66edcd8e4675531a851a4e6473a331fdd4017e3e02f217460524d09fe16"
 
   url "https://github.com/ValentinTorassa/blackice/releases/download/v#{version}/Blackice-#{version}.zip"
   name "Blackice"
