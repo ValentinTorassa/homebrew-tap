@@ -1,7 +1,7 @@
 cask "blackice" do
   # scripts/update-cask.sh sets both for each release.
-  version "0.2.1"
-  sha256 "da8bd749bc0abdddee6afa98f93940d84903024a32545529bc6685bd0b07e909"
+  version "0.3.0"
+  sha256 "4bc2548f7d69fed8df4a12b31dc4610dfe81a71e6673e18a000fec48425d6b86"
 
   url "https://github.com/ValentinTorassa/blackice/releases/download/v#{version}/Blackice-#{version}.zip"
   name "Blackice"
@@ -38,11 +38,13 @@ cask "blackice" do
   zap trash: "~/Library/Logs/blackice"
 
   caveats <<~EOS
-    Run `blackice start`. The first time, it asks a few questions to write
-    ~/.config/blackice/blackice.toml, then opens System Settings: under General >
-    Login Items & Extensions > Network Extensions, turn Blackice on.
+    Run `blackice start`. The first time, you pick from lists: the mode, who
+    answers in ask mode (fx, which start installs and sets up, or you), and the
+    apps to trust. It writes ~/.config/blackice/blackice.toml, then opens System
+    Settings and prints where to allow the network extension.
 
-    To run the hooks in ask mode, load the daemon (a LaunchAgent for your user):
+    To have fx answer later: blackice agent connect fx
+    For hooks written by hand, load the daemon (a LaunchAgent for your user):
       blackice agent install
 
     Before uninstalling, remove the daemon and the extension, which Homebrew cannot do:
