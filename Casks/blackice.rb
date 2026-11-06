@@ -1,7 +1,7 @@
 cask "blackice" do
   # scripts/update-cask.sh sets both for each release.
-  version "0.4.7"
-  sha256 "5090cd9afcd417d413072aab8070913092df9819435d8a600aa6ad1681a52846"
+  version "1.0.0"
+  sha256 "911b5fab9dd2f8e7f41a996a4dd041e3df28cf7c646fb47780802d7c7fec11d1"
 
   url "https://github.com/ValentinTorassa/blackice/releases/download/v#{version}/Blackice-#{version}.zip"
   name "Blackice"
@@ -39,22 +39,22 @@ cask "blackice" do
 
   caveats <<~EOS
     Run `blackice start`. The first time, you pick from lists: the mode, who
-    answers in ask mode (fx, which start installs and sets up, or you), and the
-    apps to trust. It writes ~/.config/blackice/blackice.toml, then opens System
-    Settings and prints where to allow the network extension.
+    answers in ask mode (fx, Claude Code or you; start sets up the agent you
+    pick), and the apps to trust. It writes ~/.config/blackice/blackice.toml,
+    then opens System Settings and prints where to allow the network extension.
 
-    To have fx answer later: blackice agent connect fx
+    To have an agent answer later: blackice agent connect fx
+    (or claude-code, codex, opencode).
     For hooks written by hand, load the daemon (a LaunchAgent for your user):
       blackice agent install
 
+    After upgrading, run `blackice start` (Touch ID). If it exits with status 75,
+    restart the Mac and run it again.
+
     Before uninstalling, remove the daemon and the extension, which Homebrew cannot do:
+      blackice menu --login off
       blackice agent uninstall
       blackice stop
-
-    After upgrading, run `blackice start`, then restart the Mac: on macOS 27.0.1 an
-    extension upgraded in place could not be reached until a restart. Then run
-    `blackice agent uninstall` and `blackice agent install`, so that the daemon runs the
-    new binary.
 
     Install guide: https://blackice-macos.vercel.app/docs/install
   EOS
