@@ -1,7 +1,7 @@
 cask "blackice" do
   # scripts/update-cask.sh sets both for each release.
-  version "1.0.2"
-  sha256 "7386b3d7e462baaa2e47178237004f9e6685783aa58843868e3973a941995576"
+  version "1.0.3"
+  sha256 "4424c192708e74171424d0e874baf006383386daf022afbbb80240904e4ee012"
 
   url "https://github.com/ValentinTorassa/blackice/releases/download/v#{version}/Blackice-#{version}.zip"
   name "Blackice"
@@ -14,6 +14,7 @@ cask "blackice" do
   end
 
   depends_on arch: :arm64
+  # 14.4 or later (LSMinimumSystemVersion); Homebrew can name only the major version.
   depends_on macos: :sonoma
 
   app "Blackice.app"
@@ -38,6 +39,8 @@ cask "blackice" do
   zap trash: "~/Library/Logs/blackice"
 
   caveats <<~EOS
+    blackice needs macOS 14.4 or later; Homebrew checks only for macOS 14.
+
     Run `blackice start`. The first time, you pick from lists: the mode, who
     answers in ask mode (fx, Claude Code or you; start sets up the agent you
     pick), and the apps to trust. It writes ~/.config/blackice/blackice.toml,
