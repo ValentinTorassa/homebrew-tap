@@ -1,7 +1,7 @@
 cask "blackice" do
   # scripts/update-cask.sh sets both for each release.
-  version "1.0.7"
-  sha256 "1e013215d2dd45b7acd25797d281f4eb5d69dc085ea0d4f56213005ea097e018"
+  version "1.0.8"
+  sha256 "c70aa09a237631e4362d6a6ac3fb3c518af53833cbcaf9b49e2b6eace4835424"
 
   url "https://github.com/ValentinTorassa/blackice/releases/download/v#{version}/Blackice-#{version}.zip"
   name "Blackice"
@@ -35,8 +35,14 @@ cask "blackice" do
   # content filter stay: only `blackice stop` removes them (see the caveats).
   uninstall launchctl: "com.valentorassa.blackice.daemon"
 
-  # The daemon's logs and event log. ~/.config/blackice holds the user's configuration and stays.
-  zap trash: "~/Library/Logs/blackice"
+  # The agents' homes from `blackice agent connect`, with their sign-ins (fx's, Codex's and
+  # opencode's are files there; Claude Code's is a login keychain item that zap leaves), and the
+  # daemon's logs and event log. blackice.toml, in ~/.config/blackice, holds the user's
+  # configuration and stays.
+  zap trash: [
+    "~/.config/blackice/agent",
+    "~/Library/Logs/blackice",
+  ]
 
   caveats <<~EOS
     blackice needs macOS 14.4 or later; Homebrew checks only for macOS 14.
